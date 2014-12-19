@@ -8,10 +8,23 @@
 
 
 using namespace std;
-
+inline bool FileExist(const std::string& name)
+{
+    ifstream file(name);
+    if(!file)            // If the file was not found, then file is 0, i.e. !file=1 or true.
+        return false;    // The file was not found.
+    else                 // If the file was found, then file is non-0.
+        return true;     // The file was found.
+}
 vector<string> GetVCFContent(string FAddress)
 {
 	vector<string> collection;
+	if (!FileExist(FAddress))
+	{
+		cout <<"Can not locate .vcf file with provided address"<<endl;
+		return collection;
+	}
+
 	ifstream file(FAddress);
 	string line;
 	while(getline(file, line))
@@ -30,6 +43,7 @@ bool starts_with(const std::string &value1, const std::string &value2)
 }
 void CheckSingleVariantRatio(int Variant,int Total,string FAddress)
 {
+
 	vector<string> Res=GetVCFContent(FAddress);
 	for(int i = 0; i != Res.size(); i++)
 	{

@@ -29,7 +29,7 @@ void ReadKeys(int argc, char* argv[])
 	                    // We know the next argument *should* be the filename:
 	                    FileAddress = argv[i + 1];
 	                }
-	                else if (strcmp(argv[i] , "-t")==0) {
+	                else if (strcmp(argv[i] , "-r")==0) {
 	                    TotalReads = stoi( argv[i + 1]);
 	                }
 	                else if (strcmp(argv[i], "-v")==0) {
@@ -58,13 +58,13 @@ void ReadKeys(int argc, char* argv[])
 		 return;
 	 }
 
-	 //cout <<"Preparing with Ref:"<<RefAdr<<endl<<"Output"<<Output<<endl;
+	 cout <<"Preparing to check :"<<TotalReads<<" - "<<TotalVariants<<endl;
 	 CheckSingleVariantRatio(TotalVariants,TotalReads,FileAddress);
 }
 
 int main(int argc, char* argv[]) {
 	cout <<endl<< "Random Read Generator initializing" << endl;
-	//ReadKeys(argc,argv);
+	ReadKeys(argc,argv);
 
 	return 0;
 }
