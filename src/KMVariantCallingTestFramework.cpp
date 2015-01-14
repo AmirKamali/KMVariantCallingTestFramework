@@ -10,6 +10,10 @@
 #include "string.h"
 #include "VCFModel.h"
 using namespace std;
+/////////////////////
+//This application provides automated tests for variant calling pipelines
+
+////////////////////
 void ReadKeys(int argc, char* argv[])
 {
 	string FileAddress="";
